@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+<<<<<<< HEAD
         ContactView()
+=======
+        TabView{
+            Tab("Contacts", systemImage: "person.crop.circle.fill"){
+                ContactListView()
+            }
+        }
+>>>>>>> main
     }
 }
-
 #Preview {
     ContentView()
 }
