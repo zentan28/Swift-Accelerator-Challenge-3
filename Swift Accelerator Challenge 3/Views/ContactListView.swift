@@ -34,23 +34,25 @@ struct ContactListView: View {
                                 }
                             }
                         }
+                        
+                        .onDelete{indexSet in
+                            category.contacts.remove(atOffsets: indexSet)
+                        }
+                        .onMove{indices, newOffset in
+                            category.contacts.move(fromOffsets: indices, toOffset: newOffset)
+                        }
                     }
                 }
             }else{
                 ContentUnavailableView("No contacts found.", image: "person.crop.circle.badge.questionmark.fill", description: Text("Add your first contact"))
             }
         }
-    .searchable(text: $searchText)
-    .toolbar {
-        ToolbarItem(placement: .bottomBar) {
-            Button("Press Me") {
-                print("Pressed")
-                }
-            }
-        }
+        .searchable(text: $searchText)
+        .navigationTitle("Important Contacts")
     }
 }
 
 #Preview {
     ContactListView()
+        .environment(ContactCategoryManager())
 }
