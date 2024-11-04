@@ -27,7 +27,7 @@ struct ContactView: View {
         let CNStore = CNContactStore()
         
         switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .authorized:
+        case .authorized, .limited:
             do {
                 let keys = [CNContactGivenNameKey as CNKeyDescriptor, CNContactFamilyNameKey as CNKeyDescriptor]
                 let request = CNContactFetchRequest(keysToFetch: keys)
@@ -53,9 +53,6 @@ struct ContactView: View {
             
         case .denied:
             print("denied")
-            
-        case .limited:
-            print("limited")
             
         @unknown default:
             print("")
