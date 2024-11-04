@@ -10,10 +10,30 @@ import SwiftUI
 struct ContactDetailView: View {
     @Binding var contact: Contact
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Image(contact.image)
+                .resizable()
+                .scaledToFit()
+            List(){
+                Section("About"){
+                    Text("Birthday: \(contact.birthday)")
+                    VStack{
+                        Text("Other").headerProminence(.increased)
+                        Text(contact.other)
+                    }
+                }
+                Section("Reminders"){
+                    ForEach($contact.reminders){$reminder in
+                        Text("reminder")
+                    }
+                }
+            }
+            
+        }
     }
 }
 
-#Preview {
-    
+#Preview{
+    @Previewable var contact = Contact(name: "e", image: "placeholder1", birthday: Date(), phonenumber: "9999999", other: "", notes: "", reminders: [])
+    ContactDetailView(contact: .constant(contact))
 }

@@ -31,7 +31,9 @@ import Observation
         let encodedContactCategorys = try? jsonEncoder.encode(contactCategories)
         try? encodedContactCategorys?.write(to: archiveURL, options: .noFileProtection)
     }
-    
+    private func loadSampleData(){
+        contactCategories = ContactCategory.sampleContactList
+    }
     private func load() {
         let archiveURL = getArchiveURL()
         let jsonDecoder = JSONDecoder()
