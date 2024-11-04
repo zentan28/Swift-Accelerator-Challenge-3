@@ -15,25 +15,7 @@ struct ContactView: View {
     var body: some View {
         NavigationView {
             List(contacts, id: \.identifier) { contactDetail in
-                HStack(spacing: 10) {
-                    Image("Rectangle 47")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .animation(.linear, value: 3)
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("\(contactDetail.givenName)")
-                        Text("\(contactDetail.familyName)")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }.multilineTextAlignment(.leading)
-                    
-                    Spacer()
-                    
-                    Image("Call")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                }
+                Text("\(contactDetail.givenName) \(contactDetail.familyName)")
             }
             .transition(.slide)
             .onAppear(perform: getContactList)
