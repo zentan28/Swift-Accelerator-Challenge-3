@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct ContactStore{
+struct ContactStore {
     let id = UUID()
     var name: String
     //var contacts: [Contact]

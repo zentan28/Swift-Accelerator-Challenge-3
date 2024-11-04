@@ -35,16 +35,6 @@
 			path = "Swift Accelerator Challenge 3";
 			sourceTree = "<group>";
 		};
-		D9073DC22CD5D5E900126D86 /* Swift Accelerator Challenge 3Tests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Swift Accelerator Challenge 3Tests";
-			sourceTree = "<group>";
-		};
-		D9073DCC2CD5D5E900126D86 /* Swift Accelerator Challenge 3UITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Swift Accelerator Challenge 3UITests";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				D9073DB12CD5D5E800126D86 /* Swift Accelerator Challenge 3 */,
-				D9073DC22CD5D5E900126D86 /* Swift Accelerator Challenge 3Tests */,
-				D9073DCC2CD5D5E900126D86 /* Swift Accelerator Challenge 3UITests */,
 				D9073DB02CD5D5E800126D86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				D9073DC12CD5D5E900126D86 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				D9073DC22CD5D5E900126D86 /* Swift Accelerator Challenge 3Tests */,
-			);
 			name = "Swift Accelerator Challenge 3Tests";
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				D9073DCB2CD5D5E900126D86 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D9073DCC2CD5D5E900126D86 /* Swift Accelerator Challenge 3UITests */,
 			);
 			name = "Swift Accelerator Challenge 3UITests";
 			packageProductDependencies = (

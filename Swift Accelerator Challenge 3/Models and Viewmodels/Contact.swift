@@ -5,7 +5,7 @@
 //  Created by Calvin Abad on 4/11/24.
 //
 import Foundation
-struct Contact{
+struct Contact: Identifiable {
     let id = UUID()
     var name: String
     var birthday: Date
