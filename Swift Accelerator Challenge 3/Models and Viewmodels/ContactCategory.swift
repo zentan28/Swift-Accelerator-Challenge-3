@@ -6,8 +6,9 @@
 //
 
 import Foundation
-struct ContactStore{
+struct ContactCategory: Codable, Identifiable{
     let id = UUID()
     var name: String
-    //var contacts: [Contact]
+    var contacts: [Contact]
 }
+

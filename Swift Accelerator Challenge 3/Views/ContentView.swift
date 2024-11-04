@@ -8,17 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var searchText = ""
     var body: some View {
-        NavigationStack{
-            
-            
-            
+        TabView{
+            Tab("Contacts", systemImage: "person.crop.circle.fill"){
+                ContactListView()
+            }
         }
-        .searchable(text: $searchText)
     }
 }
-
 #Preview {
     ContentView()
 }
