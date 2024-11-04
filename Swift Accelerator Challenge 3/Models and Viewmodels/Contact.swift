@@ -5,11 +5,7 @@
 //  Created by Calvin Abad on 4/11/24.
 //
 import Foundation
-<<<<<<< HEAD
-struct Contact: Identifiable {
-=======
 struct Contact: Identifiable, Codable{
->>>>>>> main
     let id = UUID()
     var name: String
     var image: String
