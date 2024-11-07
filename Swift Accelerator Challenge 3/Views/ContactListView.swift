@@ -44,7 +44,21 @@ struct ContactListView: View {
                     }
                 }
             }else{
-                ContentUnavailableView("No contacts found.", image: "person.crop.circle.badge.questionmark.fill", description: Text("Add your first contact"))
+                ContentUnavailableView{
+                    Label("No contacts found.", systemImage: "person.crop.circle.badge.questionmark.fill")
+                }description:{
+                    Text("Add your first contact")
+                    NavigationLink{
+                        CategoryCreatorView()
+                    }label:{
+                        Text("Create a new category")
+                            .padding()
+                            .foregroundStyle(Color.white)
+                            .background(Color.blue)
+                            .cornerRadius(100)
+                    }
+                }
+                
             }
         }
         .searchable(text: $searchText)

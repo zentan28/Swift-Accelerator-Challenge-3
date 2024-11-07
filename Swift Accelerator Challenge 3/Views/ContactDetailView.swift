@@ -19,15 +19,25 @@ struct ContactDetailView: View {
                     .cornerRadius(200)
                 List(){
                     Section("About"){
+                        Text("Phone number: \(contact.phonenumber)")
                         Text("Birthday: \(contact.birthday)")
-                        VStack{
-                            Text("Other info: \(contact.other)")
-                        }
+                        Text("Other info: \(contact.other)")
                     }
-                    Section("Reminders"){
+                    Section{
                         ForEach($contact.reminders){$reminder in
                             Text("reminder")
                         }
+                    }header: {
+                        HStack {
+                            Text("Reminders")
+                             Spacer()
+                            Button{
+                                addNewReminder = true
+                            }label:{
+                                Image(systemName:"plus")
+                            }
+                            //add reminders
+                         }
                     }
                 }
             }
