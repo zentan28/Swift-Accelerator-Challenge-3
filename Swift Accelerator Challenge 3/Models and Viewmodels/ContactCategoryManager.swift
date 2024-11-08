@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 @Observable class ContactCategoryManager {
-    var contactCategories: [ContactCategory] = [] {
+    var contactCategories: [ContactCategory] = []/*ContactCategory.sampleContactList*/ {
         didSet {
             save()
         }
@@ -31,7 +31,7 @@ import Observation
         let encodedContactCategorys = try? jsonEncoder.encode(contactCategories)
         try? encodedContactCategorys?.write(to: archiveURL, options: .noFileProtection)
     }
-    private func loadSampleData(){
+    func loadSampleData(){
         contactCategories = ContactCategory.sampleContactList
     }
     private func load() {

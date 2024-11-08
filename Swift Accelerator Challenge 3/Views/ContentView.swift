@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        ContactView()
+    var body: some View{
+        TabView {
+            Tab("Contacts", systemImage: "person.crop.circle.fill") {
+                ContactListView()
+            }
+        }
     }
 }
 #Preview {
     ContentView()
+        .environment(ContactCategoryManager())
 }
