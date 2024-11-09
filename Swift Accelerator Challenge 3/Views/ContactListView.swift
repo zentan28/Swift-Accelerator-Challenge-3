@@ -15,38 +15,15 @@ struct ContactListView: View {
         NavigationStack{
             if !contactCategoryManager.contactCategories.isEmpty{
                 List($contactCategoryManager.contactCategories, editActions: [.all]){$category in
-                    Section(category.name){
-                        ForEach($category.contacts){$contact in
-                            NavigationLink{
-                                ContactDetailView(contact: $contact)
-                            }label:{
-                                HStack{
-                                    Image(contact.image)
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
-                                        .cornerRadius(200)
-                                    Spacer()
-                                    VStack{
-                                        Text(contact.name)
-                                        Text(contact.other)
-                                    }
-                                    Spacer()
-                                }
-                            }
-                        }
-                        
-                        .onDelete{indexSet in
-                            category.contacts.remove(atOffsets: indexSet)
-                        }
-                        .onMove{indices, newOffset in
-                            category.contacts.move(fromOffsets: indices, toOffset: newOffset)
-                        }
-                    }
+                    ContactSectionView(category: $category)
+                }
+                .toolbar{
+                    EditButton()
                 }
             }else{
                 ContentUnavailableView{
                     Label("No contacts found.", systemImage: "person.crop.circle.badge.questionmark.fill")
-                }description:{
+                } description: {
                     Text("Add your first contact")
                     NavigationLink{
                         CategoryCreatorView()
@@ -62,7 +39,6 @@ struct ContactListView: View {
             }
         }
         .searchable(text: $searchText)
-        .navigationTitle("Important Contacts")
     }
 }
 

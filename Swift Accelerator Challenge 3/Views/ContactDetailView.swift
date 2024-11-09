@@ -25,7 +25,7 @@ struct ContactDetailView: View {
                     }
                     Section{
                         ForEach($contact.reminders){$reminder in
-                            Text("reminder")
+                            Text("\(reminder.text) at \(reminder.date)")
                         }
                     }header: {
                         HStack {
@@ -39,6 +39,9 @@ struct ContactDetailView: View {
                             //add reminders
                          }
                     }
+                }
+                .toolbar{
+                    EditButton()
                 }
             }
         }

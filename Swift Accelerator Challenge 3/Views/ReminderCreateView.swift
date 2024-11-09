@@ -18,6 +18,7 @@ struct ReminderCreateView: View {
             DatePicker("Reminder Date", selection: $reminderDate)
             Button{
                 contact.reminders.append(Reminder(text: reminderDescription, date: reminderDate))
+                print(contact)
                 presentationMode.wrappedValue.dismiss()
             }label:{
                 Text("Save...")
