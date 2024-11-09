@@ -30,25 +30,29 @@ class ContactManager: ObservableObject {
     // Load contacts from Contacts app and sync with locally stored contacts
     func syncContacts() {
         let store = CNContactStore()
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
+        let keys = [CNContactIdentifierKey, CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey, CNContactBirthdayKey] as [CNKeyDescriptor]
         let request = CNContactFetchRequest(keysToFetch: keys)
 
         do {
             try store.enumerateContacts(with: request) { cnContact, _ in
-                let contact = self.convertCNContactToContact(cnContact)
+                let newContact = self.convertCNContactToContact(cnContact)
 
-                if let existingContactIndex = self.contacts.firstIndex(where: { existingContact in
-                    existingContact == contact
-                }) {
-                    // Contact found, update if necessary
-                    if self.contacts[existingContactIndex] != contact {
-                        self.contacts[existingContactIndex] = contact
-                        self.saveContacts() // Update local storage
+                // Find existing contact by identifier
+                if let existingContactIndex = self.contacts.firstIndex(where: { $0.identifier == newContact.identifier }) {
+                    let existingContact = self.contacts[existingContactIndex]
+                    
+                    // Only update if fields have actually changed
+                    if existingContact.name != newContact.name ||
+                        existingContact.phonenumber != newContact.phonenumber ||
+                        existingContact.image != newContact.image ||
+                        existingContact.birthday != newContact.birthday {
+                        self.contacts[existingContactIndex] = newContact
+                        self.saveContacts()
                     }
                 } else {
-                    // Contact not found, add it
-                    self.contacts.append(contact)
-                    self.saveContacts() // Update local storage
+                    // Contact not found, add as new
+                    self.contacts.append(newContact)
+                    self.saveContacts()
                 }
             }
         } catch {
@@ -59,25 +63,19 @@ class ContactManager: ObservableObject {
     // Convert CNContact to custom Contact object
     func convertCNContactToContact(_ cnContact: CNContact) -> Contact {
         return Contact(
-            name: "\(cnContact.givenName) \(cnContact.familyName)",
-            image: "placeholder",
-            birthday: Date(), // Add image handling as needed
+            identifier: cnContact.identifier,
+            contactCategory: "Unknown",
+            name: "\(cnContact.givenName) \(cnContact.familyName)", // Might need optional cus no familyName
+            image: cnContact.imageData ?? Data(), // Set-up default image
+            birthday: cnContact.birthday?.date ?? Date(), // Use a default if birthday is missing
             phonenumber: cnContact.phoneNumbers.first?.value.stringValue ?? "",
             other: "",
             notes: "",
             reminders: []
         )
     }
-
-    // Convert custom Contact object to CNContact (if needed)
-    func convertContactToCNContact(_ contact: Contact) -> CNContact {
-        let cnContact = CNMutableContact()
-        cnContact.givenName = contact.name
-        cnContact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMain, value: CNPhoneNumber(stringValue: contact.phonenumber))]
-        // Add other properties as needed
-        return cnContact
-    }
-
+    
+    
     // Local storage functions
     private func saveContacts() {
         let archiveURL = URL.documentsDirectory.appendingPathComponent("contacts.json")
