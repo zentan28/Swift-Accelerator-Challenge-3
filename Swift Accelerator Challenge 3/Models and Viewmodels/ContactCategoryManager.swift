@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 @Observable class ContactCategoryManager {
-    var contactCategories: [ContactCategory] = []{
+    var contactCategories: [ContactCategory] = ContactCategory.sampleContactList{
         didSet {
             save()
         }

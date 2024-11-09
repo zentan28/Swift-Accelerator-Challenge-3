@@ -17,15 +17,21 @@ struct ContactDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(200)
-                List(){
+                List{
                     Section("About"){
                         Text("Phone number: \(contact.phonenumber)")
                         Text("Birthday: \(contact.birthday)")
                         Text("Other info: \(contact.other)")
                     }
-                    Section{
-                        ForEach($contact.reminders){$reminder in
+                    Section(){
+                        ForEach($contact.reminders, editActions: .all){$reminder in
                             Text("\(reminder.text) at \(reminder.date)")
+                        }
+                        .onDelete{indexSet in
+                            contact.reminders.remove(atOffsets: indexSet)
+                        }
+                        .onMove{indices, newOffset in
+                            contact.reminders.move(fromOffsets: indices, toOffset: newOffset)
                         }
                     }header: {
                         HStack {
@@ -52,6 +58,6 @@ struct ContactDetailView: View {
 }
 
 #Preview{
-    @Previewable var contact = Contact(name: "e", image: "placeholder1", birthday: Date(), phonenumber: "9999999", other: "Suffering from exam stress", notes: "", reminders: [])
+    @Previewable var contact = Contact(name: "e", image: "placeholder1", birthday: Date(), phonenumber: "9999999", other: "Suffering from exam stress", notes: "", reminders: [Reminder(text: "Hello", date: Date())])
     ContactDetailView(contact: .constant(contact))
 }

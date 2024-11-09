@@ -22,4 +22,6 @@ struct Contact: Identifiable, Codable, Equatable {
                    lhs.birthday == rhs.birthday &&
                    lhs.phonenumber == rhs.phonenumber
         }
+    var discardedReminders: [Reminder] = []
+    //var contactCategory: ContactCategory
 }

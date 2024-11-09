@@ -16,7 +16,16 @@ struct DebugMenuView: View {
             }label:{
                 Text("Load Sample Data")
                     .padding()
-                    .foregroundStyle(Color.gray)
+                    .background(Color.gray)
+                    .foregroundStyle(Color.white)
+            }
+            Button{
+                ContactCategoryManager().contactCategories = []
+            }label:{
+                Text("Clear All Data")
+                    .padding()
+                    .background(Color.red)
+                    .foregroundStyle(Color.white)
             }
         }
     }
