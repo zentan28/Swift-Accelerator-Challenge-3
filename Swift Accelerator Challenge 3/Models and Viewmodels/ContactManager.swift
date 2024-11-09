@@ -71,7 +71,10 @@ class ContactManager: ObservableObject {
             phonenumber: cnContact.phoneNumbers.first?.value.stringValue ?? "",
             other: "",
             notes: "",
-            reminders: []
+            reminders: [],
+            discardedReminders: [],
+            contactCategory: ContactCategory.friends
+            
         )
     }
     

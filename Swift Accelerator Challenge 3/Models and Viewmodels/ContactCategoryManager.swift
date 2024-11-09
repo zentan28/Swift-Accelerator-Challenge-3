@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 @Observable class ContactCategoryManager {
-    var contactCategories: [ContactCategory] = ContactCategory.sampleContactList{
+    var contactCategories: [Contact] = sampleContactList{
         didSet {
             save()
         }
@@ -32,14 +32,14 @@ import Observation
         try? encodedContactCategorys?.write(to: archiveURL, options: .noFileProtection)
     }
     func loadSampleData(){
-        contactCategories = ContactCategory.sampleContactList
+        contactCategories = sampleContactList
     }
     private func load() {
         let archiveURL = getArchiveURL()
         let jsonDecoder = JSONDecoder()
                 
         if let retrievedContactCategoryData = try? Data(contentsOf: archiveURL),
-           let contactCategoriesDecoded = try? jsonDecoder.decode([ContactCategory].self, from: retrievedContactCategoryData) {
+           let contactCategoriesDecoded = try? jsonDecoder.decode([Contact].self, from: retrievedContactCategoryData) {
             contactCategories = contactCategoriesDecoded
         }
     }

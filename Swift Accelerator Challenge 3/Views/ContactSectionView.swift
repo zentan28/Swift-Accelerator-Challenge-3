@@ -7,10 +7,10 @@
 
 import SwiftUI
 struct ContactSectionView: View {
-    @Binding var category: ContactCategory
+    @Binding var contact: Contact
     var body: some View {
-        Section(category.name){
-            ForEach($category.contacts){$contact in
+        Section{
+            //ForEach(contact){$contact in
                 NavigationLink{
                     ContactDetailView(contact: $contact)
                 }label:{
@@ -27,13 +27,21 @@ struct ContactSectionView: View {
                         Spacer()
                     }
                 }
-            }
-            
-            .onDelete{indexSet in
-                category.contacts.remove(atOffsets: indexSet)
-            }
-            .onMove{indices, newOffset in
-                category.contacts.move(fromOffsets: indices, toOffset: newOffset)
+            //}
+//            
+//            .onDelete{indexSet in
+//                contact.remove(atOffsets: indexSet)
+//            }
+//            .onMove{indices, newOffset in
+//                contact.move(fromOffsets: indices, toOffset: newOffset)
+//            }
+        }header:{
+            HStack{
+                NavigationLink{
+                    
+                }label:{
+                    Image(systemName: "plus")
+                }
             }
         }
 

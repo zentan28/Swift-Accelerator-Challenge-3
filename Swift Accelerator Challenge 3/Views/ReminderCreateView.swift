@@ -27,7 +27,7 @@ struct ReminderCreateView: View {
     }
 }
 
-#Preview {
-    @Previewable @State var contact = Contact(name: "e", image: "e", birthday: Date(), phonenumber: "e", other: "e", notes: "e", reminders: [])
-    ReminderCreateView(contact: $contact)
-}
+//#Preview {
+//    @Previewable @State var contact = Contact(name: "e", image: "e", birthday: Date(), phonenumber: "e", other: "e", notes: "e", reminders: [])
+//    ReminderCreateView(contact: $contact)
+//}

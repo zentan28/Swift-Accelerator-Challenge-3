@@ -5,7 +5,7 @@
 //  Created by Calvin Abad on 4/11/24.
 //
 import Foundation
-struct Contact: Identifiable, Codable, Equatable {
+struct Contact: Identifiable, Codable{
     let id = UUID()
     var identifier: String
     var contactCategory: String
@@ -21,5 +21,13 @@ struct Contact: Identifiable, Codable, Equatable {
         return lhs.identifier == rhs.identifier
     }
     
-    var discardedReminders: [Reminder] = []
+//    static func == (lhs: Contact, rhs: Contact) -> Bool {
+//            return lhs.id == rhs.id &&
+//                   lhs.name == rhs.name &&
+//                   lhs.image == rhs.image &&
+//                   lhs.birthday == rhs.birthday &&
+//                   lhs.phonenumber == rhs.phonenumber
+//        }
+    var discardedReminders: [Reminder]
+        //    var contactCategory: ContactCategory
 }

@@ -14,8 +14,8 @@ struct ContactListView: View {
         @Bindable var contactCategoryManager = contactCategoryManager
         NavigationStack{
             if !contactCategoryManager.contactCategories.isEmpty{
-                List($contactCategoryManager.contactCategories, editActions: [.all]){$category in
-                    ContactSectionView(category: $category)
+                List($contactCategoryManager.contactCategories, editActions: [.all]){$contact in
+                    ContactSectionView(contact: $contact)
                 }
                 .toolbar{
                     EditButton()

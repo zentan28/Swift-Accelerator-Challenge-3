@@ -20,7 +20,7 @@ struct ContactDetailView: View {
                 List{
                     Section("About"){
                         Text("Phone number: \(contact.phonenumber)")
-                        Text("Birthday: \(contact.birthday)")
+                        Text("Birthday: \(String(describing: contact.birthday))")
                         Text("Other info: \(contact.other)")
                     }
                     Section(){
@@ -58,6 +58,6 @@ struct ContactDetailView: View {
 }
 
 #Preview{
-    @Previewable var contact = Contact(name: "e", image: "placeholder1", birthday: Date(), phonenumber: "9999999", other: "Suffering from exam stress", notes: "", reminders: [Reminder(text: "Hello", date: Date())])
-    ContactDetailView(contact: .constant(contact))
+    //@Previewable var contact = Contact(name: "e", image: "placeholder1", birthday: Date(), phonenumber: "9999999", other: "Suffering from exam stress", notes: "", reminders: [Reminder(text: "Hello", date: Date()], ContactCategory: .work)
+    //ContactDetailView(contact: .constant(contact))
 }
