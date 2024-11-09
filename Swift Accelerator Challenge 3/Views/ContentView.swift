@@ -13,6 +13,9 @@ struct ContentView: View {
             Tab("Contacts", systemImage: "person.crop.circle.fill") {
                 ContactListView()
             }
+            Tab("ContactViewTest", systemImage: "person.crop.circle.fill") {
+                ContactViewTest()
+            }
         }
     }
 }
