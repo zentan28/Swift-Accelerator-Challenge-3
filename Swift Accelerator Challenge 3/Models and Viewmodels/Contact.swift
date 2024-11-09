@@ -8,7 +8,6 @@ import Foundation
 struct Contact: Identifiable, Codable{
     let id = UUID()
     var identifier: String
-    var contactCategory: String
     var name: String
     var image: Data
     var birthday: Date

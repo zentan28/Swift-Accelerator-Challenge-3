@@ -64,7 +64,6 @@ class ContactManager: ObservableObject {
     func convertCNContactToContact(_ cnContact: CNContact) -> Contact {
         return Contact(
             identifier: cnContact.identifier,
-            contactCategory: "Unknown",
             name: "\(cnContact.givenName) \(cnContact.familyName)", // Might need optional cus no familyName
             image: cnContact.imageData ?? Data(), // Set-up default image
             birthday: cnContact.birthday?.date ?? Date(), // Use a default if birthday is missing
@@ -72,9 +71,7 @@ class ContactManager: ObservableObject {
             other: "",
             notes: "",
             reminders: [],
-            discardedReminders: [],
-            contactCategory: ContactCategory.friends
-            
+            discardedReminders: []
         )
     }
     

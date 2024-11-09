@@ -13,10 +13,10 @@ struct ContactDetailView: View {
     var body: some View {
         NavigationStack{
             VStack{
-                Image(contact.image)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(200)
+//                Image(contact.image)
+//                    .resizable()
+//                    .scaledToFit()
+//                    .cornerRadius(200)
                 List{
                     Section("About"){
                         Text("Phone number: \(contact.phonenumber)")

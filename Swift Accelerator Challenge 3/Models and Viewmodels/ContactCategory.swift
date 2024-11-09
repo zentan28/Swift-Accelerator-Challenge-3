@@ -6,10 +6,9 @@
 //
 
 import Foundation
-enum ContactCategory: Codable, Equatable{
-    case friends
-    case family
-    case work
-    case unknown
+struct ContactCategory: Codable, Identifiable{
+    let id = UUID()
+    var name: String
+    var contacts: [Contact]
 }
 

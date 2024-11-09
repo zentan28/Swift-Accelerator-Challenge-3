@@ -7,18 +7,18 @@
 
 import SwiftUI
 struct ContactSectionView: View {
-    @Binding var contact: Contact
+    @Binding var contactCategory: ContactCategory
     var body: some View {
         Section{
-            //ForEach(contact){$contact in
+            ForEach($contactCategory.contacts){$contact in
                 NavigationLink{
                     ContactDetailView(contact: $contact)
                 }label:{
                     HStack{
-                        Image(contact.image)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .cornerRadius(200)
+//                        Image(contact.image)
+//                            .resizable()
+//                            .frame(width: 50, height: 50)
+//                            .cornerRadius(200)
                         Spacer()
                         VStack{
                             Text(contact.name)
@@ -27,16 +27,17 @@ struct ContactSectionView: View {
                         Spacer()
                     }
                 }
-            //}
-//            
-//            .onDelete{indexSet in
-//                contact.remove(atOffsets: indexSet)
-//            }
-//            .onMove{indices, newOffset in
-//                contact.move(fromOffsets: indices, toOffset: newOffset)
-//            }
+            }
+            
+            .onDelete{indexSet in
+                contactCategory.contacts.remove(atOffsets: indexSet)
+            }
+            .onMove{indices, newOffset in
+                contactCategory.contacts.move(fromOffsets: indices, toOffset: newOffset)
+            }
         }header:{
             HStack{
+                Text("\(contactCategory.name)")
                 NavigationLink{
                     
                 }label:{
