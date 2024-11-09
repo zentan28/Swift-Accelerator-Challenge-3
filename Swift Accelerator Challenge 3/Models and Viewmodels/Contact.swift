@@ -9,7 +9,7 @@ struct Contact: Identifiable, Codable, Equatable {
     let id = UUID()
     var name: String
     var image: String
-    var birthday: Date?
+    var birthday: Date
     var phonenumber: String
     var other: String
     var notes: String

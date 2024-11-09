@@ -58,12 +58,10 @@ class ContactManager: ObservableObject {
     
     // Convert CNContact to custom Contact object
     func convertCNContactToContact(_ cnContact: CNContact) -> Contact {
-        let birthdayDate: Date? = cnContact.birthday?.date
-        
         return Contact(
             name: "\(cnContact.givenName) \(cnContact.familyName)",
-            image: "placeholder", // Add image handling as needed
-            birthday: birthdayDate,
+            image: "placeholder",
+            birthday: Date(), // Add image handling as needed
             phonenumber: cnContact.phoneNumbers.first?.value.stringValue ?? "",
             other: "",
             notes: "",
