@@ -1,5 +1,5 @@
 //
-//  ContactView.swift
+//  ContactListView.swift
 //  Swift Accelerator Challenge 3
 //
 //  Created by Calvin Abad on 4/11/24.
@@ -12,15 +12,16 @@ struct ContactListView: View {
     @Environment(ContactCategoryManager.self) var contactCategoryManager
     var body: some View {
         @Bindable var contactCategoryManager = contactCategoryManager
-        NavigationStack{
-            if !contactCategoryManager.contactCategories.isEmpty{
+        NavigationStack {
+            if !contactCategoryManager.contactCategories.isEmpty {
                 List($contactCategoryManager.contactCategories, editActions: [.all]){$category in
                     ContactSectionView(contactCategory: $category)
                 }
                 .toolbar{
                     EditButton()
                 }
-            }else{
+                
+            } else {
                 ContentUnavailableView{
                     Label("No contacts found.", systemImage: "person.crop.circle.badge.questionmark.fill")
                 } description: {
@@ -37,6 +38,7 @@ struct ContactListView: View {
                 }
                 
             }
+            
         }
         .searchable(text: $searchText)
     }

@@ -35,12 +35,12 @@ struct ContactSectionView: View {
             .onMove{indices, newOffset in
                 contactCategory.contacts.move(fromOffsets: indices, toOffset: newOffset)
             }
-        }header:{
+        } header:{
             HStack{
                 Text("\(contactCategory.name)")
                 NavigationLink{
-                    
-                }label:{
+                    ContactCreatorView(selectedCategory: $contactCategory)
+                } label:{
                     Image(systemName: "plus")
                 }
             }

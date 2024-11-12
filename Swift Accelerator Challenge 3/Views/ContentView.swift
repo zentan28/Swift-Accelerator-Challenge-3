@@ -13,9 +13,18 @@ struct ContentView: View {
             Tab("Contacts", systemImage: "person.crop.circle.fill") {
                 ContactListView()
             }
-            Tab("ContactViewTest", systemImage: "person.crop.circle.fill") {
-                ContactViewTest()
-            }
+//            Tab("Detail", systemImage: "person.crop.circle.fill") {
+//                ContactDetailView(contact: $)
+//            }
+//            Tab("List", systemImage: "person.crop.circle.fill") {
+//                ContactListView()
+//            }
+//            Tab("Section", systemImage: "person.crop.circle.fill") {
+//                ContactSectionView()
+//            }
+//            Tab("ReminderCreate", systemImage: "person.crop.circle.fill") {
+//                ReminderCreateView()
+//            }
         }
     }
 }

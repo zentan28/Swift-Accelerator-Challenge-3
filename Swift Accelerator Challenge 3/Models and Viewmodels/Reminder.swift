@@ -6,7 +6,7 @@
 //
 import Foundation
 struct Reminder: Identifiable, Codable{
-    let id = UUID()
+    var id = UUID()
     var text: String
     var date: Date
 }

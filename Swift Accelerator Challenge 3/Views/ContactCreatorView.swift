@@ -8,11 +8,41 @@
 import SwiftUI
 
 struct ContactCreatorView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @State private var name = ""
+    @State private var phoneNumber = ""
+    @State private var otherInfo = ""
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(ContactCategoryManager.self) var contactCategoryManager
+    @Binding var selectedCategory: ContactCategory
 
-#Preview {
-    ContactCreatorView()
+    var body: some View {
+        NavigationView {
+            Form {
+                Section(header: Text("Contact Information")) {
+                    TextField("Name", text: $name)
+                    TextField("Phone Number", text: $phoneNumber)
+                    TextField("Other Information", text: $otherInfo)
+                }
+
+                Section {
+                    Button("Create Contact") {
+                        let newContact = Contact(
+                            name: name,
+                            phoneNumber: phoneNumber,
+                            birthday: nil,
+                            profileImage: nil,
+                            other: otherInfo,
+                            notes: "",
+                            reminders: [],
+                            discardedReminders: []
+                        )
+                        selectedCategory.contacts.append(newContact)
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .disabled(name.isEmpty || phoneNumber.isEmpty)
+                }
+            }
+            .navigationTitle("Create Contact")
+        }
+    }
 }

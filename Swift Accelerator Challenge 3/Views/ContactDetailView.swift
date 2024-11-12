@@ -18,12 +18,14 @@ struct ContactDetailView: View {
 //                    .scaledToFit()
 //                    .cornerRadius(200)
                 List{
-                    Section("About"){
-                        Text("Phone number: \(contact.phonenumber)")
-                        Text("Birthday: \(String(describing: contact.birthday))")
+                    
+                    Section(header: Text("About: \(contact.name)")) {
+                        Text("Phone number: \(contact.phoneNumber)")
+                        Text("Birthday: ")
                         Text("Other info: \(contact.other)")
                     }
-                    Section(){
+                    
+                    Section() {
                         ForEach($contact.reminders, editActions: .all){$reminder in
                             Text("\(reminder.text) at \(reminder.date)")
                         }
@@ -33,7 +35,7 @@ struct ContactDetailView: View {
                         .onMove{indices, newOffset in
                             contact.reminders.move(fromOffsets: indices, toOffset: newOffset)
                         }
-                    }header: {
+                    } header: {
                         HStack {
                             Text("Reminders")
                              Spacer()
@@ -57,7 +59,21 @@ struct ContactDetailView: View {
     }
 }
 
-#Preview{
-    //@Previewable var contact = Contact(name: "e", image: "placeholder1", birthday: Date(), phonenumber: "9999999", other: "Suffering from exam stress", notes: "", reminders: [Reminder(text: "Hello", date: Date()], ContactCategory: .work)
-    //ContactDetailView(contact: .constant(contact))
+
+#Preview {
+  @Previewable var contact = Contact(
+    name: "Alice Smith",
+    phoneNumber: "+1 (555) 555-5555",
+    birthday: DateFormatter().date(from: "1990-01-01"),
+    profileImage: nil,
+    other: "Loves long walks on the beach and coding challenges",
+    notes: "Don't forget to send a birthday wish!",
+    reminders: [
+      Reminder(text: "Buy groceries", date: Date().addingTimeInterval(60 * 60 * 24)),
+      Reminder(text: "Finish Swift project", date: Date().addingTimeInterval(60 * 60 * 24 * 3))
+    ],
+    discardedReminders: []
+  )
+  
+  ContactDetailView(contact: .constant(contact))
 }

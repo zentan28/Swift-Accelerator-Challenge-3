@@ -6,8 +6,8 @@
 //
 
 import Foundation
-struct ContactCategory: Codable, Identifiable{
-    let id = UUID()
+struct ContactCategory: Codable, Identifiable {
+    var id = UUID()
     var name: String
     var contacts: [Contact]
 }

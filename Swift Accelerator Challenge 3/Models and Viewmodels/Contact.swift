@@ -6,8 +6,12 @@
 //
 import Foundation
 import Contacts
-struct Contact: Codable {
-    var identifier: UUID
+struct Contact: Codable, Identifiable {
+    var id = UUID()
+    var name: String
+    var phoneNumber: String
+    var birthday: Date?
+    var profileImage: Data?
     var other: String
     var notes: String
     var reminders: [Reminder]
