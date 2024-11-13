@@ -11,6 +11,7 @@ struct ContactCreatorView: View {
     @State private var name = ""
     @State private var phoneNumber = ""
     @State private var otherInfo = ""
+    @State private var birthday: Date = .init()
     @Environment(\.presentationMode) var presentationMode
     @Environment(ContactCategoryManager.self) var contactCategoryManager
     @Binding var selectedCategory: ContactCategory
@@ -22,6 +23,7 @@ struct ContactCreatorView: View {
                     TextField("Name", text: $name)
                     TextField("Phone Number", text: $phoneNumber)
                     TextField("Other Information", text: $otherInfo)
+                    DatePicker(selection: $birthday, in: ...Date.init(), displayedComponents: .date, label: { Text("Birthday") })
                 }
 
                 Section {
@@ -29,7 +31,7 @@ struct ContactCreatorView: View {
                         let newContact = Contact(
                             name: name,
                             phoneNumber: phoneNumber,
-                            birthday: nil,
+                            birthday: birthday,
                             profileImage: nil,
                             other: otherInfo,
                             notes: "",

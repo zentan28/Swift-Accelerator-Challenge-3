@@ -19,6 +19,11 @@ struct ContactListView: View {
                 }
                 .toolbar{
                     EditButton()
+                    NavigationLink {
+                        CategoryCreatorView()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
                 
             } else {
@@ -26,9 +31,9 @@ struct ContactListView: View {
                     Label("No contacts found.", systemImage: "person.crop.circle.badge.questionmark.fill")
                 } description: {
                     Text("Add your first contact")
-                    NavigationLink{
+                    NavigationLink {
                         CategoryCreatorView()
-                    }label:{
+                    } label: {
                         Text("Create a new category")
                             .padding()
                             .foregroundStyle(Color.white)
