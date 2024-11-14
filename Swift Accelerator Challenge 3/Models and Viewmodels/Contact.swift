@@ -6,6 +6,8 @@
 //
 import Foundation
 import Contacts
+import SwiftUICore
+
 struct Contact: Codable, Identifiable {
     var id = UUID()
     var name: String
@@ -16,4 +18,8 @@ struct Contact: Codable, Identifiable {
     var notes: String
     var reminders: [Reminder]
     var discardedReminders: [Reminder]
+    
+//    var initials {
+//        return name.split(separator: .whitespaces).first?.uppercased() ?? ""
+//    }
 }

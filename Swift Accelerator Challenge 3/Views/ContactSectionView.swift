@@ -9,20 +9,30 @@ import SwiftUI
 struct ContactSectionView: View {
     @Binding var contactCategory: ContactCategory
     var body: some View {
-        Section{
+        Section {
             ForEach($contactCategory.contacts){$contact in
                 NavigationLink{
                     ContactDetailView(contact: $contact)
-                }label:{
+                } label:{
                     HStack{
-//                        Image(contact.image)
-//                            .resizable()
-//                            .frame(width: 50, height: 50)
-//                            .cornerRadius(200)
+//                        if let profileImage = contact.profileImage {
+//                            Image(profileImage) //change something
+//                                .resizable()
+//                                .frame(width: 50, height: 50)
+//                                .cornerRadius(25)
+//                        } else {
+                            Text(contact.name) //change to contact.initials
+                                .frame(width: 50, height: 50)
+                                .background(Color.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(25)
+//                        }
+                        
                         Spacer()
-                        VStack{
+                        VStack(alignment: .leading) {
                             Text(contact.name)
                             Text(contact.other)
+                                .foregroundStyle(.secondary)
                         }
                         Spacer()
                     }
