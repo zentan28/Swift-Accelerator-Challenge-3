@@ -15,7 +15,7 @@ struct ReminderCreateView: View {
     var body: some View {
         Form{
             TextField("Description...", text: $reminderDescription)
-            DatePicker("Reminder Date", selection: $reminderDate)
+            DatePicker("Reminder Date", selection: $reminderDate, in: Date.init()...)
             Button{
                 contact.reminders.append(Reminder(text: reminderDescription, date: reminderDate))
                 print(contact)

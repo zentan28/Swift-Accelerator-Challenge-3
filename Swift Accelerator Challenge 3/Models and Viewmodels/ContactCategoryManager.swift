@@ -17,7 +17,13 @@ import Observation
     
         
     init() {
+//        loadSampleData()
+//        filterRemindersToDiscard()
         load()
+    }
+    
+    private func filterRemindersToDiscard() {
+        // contact.discardedReminders = contact.discardedReminders.filter { $0.date > Date() }
     }
     
     private func getArchiveURL() -> URL {
@@ -43,7 +49,8 @@ import Observation
             notes: "Don't forget to send a birthday wish!", // Added notes
             reminders: [
               Reminder(text: "Buy groceries", date: Date().addingTimeInterval(60 * 60 * 24)), // Reminder in 1 day
-              Reminder(text: "Finish Swift project", date: Date().addingTimeInterval(60 * 60 * 24 * 3)) // Reminder in 3 days
+              Reminder(text: "Finish Swift project", date: Date().addingTimeInterval(60 * 60 * 24 * 3)), // Reminder in 3 days
+              Reminder(text: "Should be discarded", date: Date().addingTimeInterval(-60 * 60 * 24 * 3))
             ],
             discardedReminders: []
           )]))
