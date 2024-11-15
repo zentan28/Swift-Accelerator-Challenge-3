@@ -9,6 +9,10 @@ import SwiftUI
 import UserNotifications
 
 struct ContentView: View {
+    
+//    @Environment(ContactCategoryManager.self) var $contactCategoryManager
+//    @Bindable var contactCategoryManager = contactCategoryManager
+    
     var body: some View {
         TabView {
             Tab("Contacts", systemImage: "person.crop.circle.fill") {
@@ -17,6 +21,9 @@ struct ContentView: View {
             Tab("Reminders", systemImage: "clock") {
                 ReminderListView()
             }
+//            Tab("Create Reminders", systemImage: "clock") {
+//                ReminderCreateViewTest(contact: $contactCategoryManager.contactCategories[0])
+//            }
         }
     }
 }
