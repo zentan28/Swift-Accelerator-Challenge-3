@@ -1,17 +1,16 @@
 //
-//  RemindersSectionView.swift
+//  RemindersSectionViewTest.swift
 //  Swift Accelerator Challenge 3
 //
 //  Created by T Krobot on 15/11/24.
 //
 
-// !!! bug in this file !!!
-// bug in line 61
-// Look at RemindersSectionViewTest
+// !!! Bug in this file !!!
+// !!! Bug description in line 61
 
 import SwiftUI
 
-struct RemindersSectionView: View {
+struct RemindersSectionViewTest: View {
     
     @Binding var contact: Contact
     @State var addNewReminder = false
@@ -31,8 +30,8 @@ struct RemindersSectionView: View {
                         }
                     }
                 }
-            } else { //this part is GPTed, idk if the code is actually correct
-                ForEach(contact.reminders) { reminder in
+            } else {
+                ForEach(contact.reminders) { reminder in //is binding needed here?
                     HStack {
                         Button {
                             if let index = contact.reminders.firstIndex(where: { $0.id == reminder.id }) {
@@ -58,12 +57,10 @@ struct RemindersSectionView: View {
             HStack {
                 Text("Reminders")
                 Spacer()
-                NavigationLink { // can't work, once pressed, CPU jumps to 100% and app freezes, look at RemindersSectionViewTest
-                    ReminderCreateViewTest(contact: $contact)
-                } label: {
+                NavigationLink(destination: ReminderCreateViewTest(contact: $contact)) {
+                    //there's a bug where app freezes when this link is called, CPU reaches max tho, is it because of binding issues?
                     Image(systemName: "plus")
                 }
-
             }
         }
     }

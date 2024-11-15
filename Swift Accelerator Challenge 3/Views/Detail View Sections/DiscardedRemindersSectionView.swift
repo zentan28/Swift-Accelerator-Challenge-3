@@ -10,7 +10,7 @@ import SwiftUI
 struct DiscardedRemindersSectionView: View {
     
     @Binding var contact: Contact
-    @State var viewAllDiscardedReminders = false
+    @State var viewAllDiscardedReminders: Bool = false
     @Environment(\.editMode) var editMode
     
     var body: some View {

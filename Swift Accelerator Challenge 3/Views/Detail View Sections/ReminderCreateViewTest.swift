@@ -24,8 +24,8 @@ struct ReminderCreateViewTest: View {
                 }
                 
                 Button("Done") {
-                    dismiss()
                     contact.reminders.append(Reminder(text: text, date: date))
+                    dismiss()
                 }
             }
             .navigationTitle("Create Reminder")

@@ -11,9 +11,6 @@ import SwiftUI
 struct ContactDetailView: View {
     
     @Binding var contact: Contact
-    @State var addNewReminder = false
-    
-    @State var viewAllDiscardedReminders = false
     @Environment(\.editMode) var editMode
     
     var body: some View {
@@ -27,10 +24,10 @@ struct ContactDetailView: View {
                     NotesSectionView(contact: $contact)
                     
                     /// reminders
-                    RemindersSectionView(contact: $contact)
+                    RemindersSectionViewTest(contact: $contact) //problem starts here
                     
                     /// either show first 3 discarded reminders or nothing if it's empty
-                    DiscardedRemindersSectionView(contact: $contact)
+                    DiscardedRemindersSectionView(contact: $contact) //problem here as well, but i'll ignore it first (likely same problem as the one above)
                 }
             }
             .toolbar {
