@@ -5,9 +5,7 @@
 //  Created by T Krobot on 15/11/24.
 //
 
-// !!! bug in this file !!!
-// bug in line 61
-// Look at RemindersSectionViewTest
+
 
 import SwiftUI
 
@@ -58,13 +56,16 @@ struct RemindersSectionView: View {
             HStack {
                 Text("Reminders")
                 Spacer()
-                NavigationLink { // can't work, once pressed, CPU jumps to 100% and app freezes, look at RemindersSectionViewTest
-                    ReminderCreateViewTest(contact: $contact)
+                Button{
+                    addNewReminder = true
                 } label: {
                     Image(systemName: "plus")
                 }
 
             }
+        }
+        .sheet(isPresented: $addNewReminder) {
+            ReminderCreateViewTest(contact: $contact)
         }
     }
 }

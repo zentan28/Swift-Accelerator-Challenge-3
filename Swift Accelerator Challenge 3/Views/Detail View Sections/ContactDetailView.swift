@@ -24,10 +24,10 @@ struct ContactDetailView: View {
                     NotesSectionView(contact: $contact)
                     
                     /// reminders
-                    RemindersSectionViewTest(contact: $contact) //problem starts here
+                    RemindersSectionView(contact: $contact)
                     
                     /// either show first 3 discarded reminders or nothing if it's empty
-                    DiscardedRemindersSectionView(contact: $contact) //problem here as well, but i'll ignore it first (likely same problem as the one above)
+                    DiscardedRemindersSectionView(contact: $contact) //Memleak here (RESOLVED)
                 }
             }
             .toolbar {

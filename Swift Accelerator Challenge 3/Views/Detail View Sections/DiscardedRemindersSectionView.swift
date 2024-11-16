@@ -11,11 +11,11 @@ struct DiscardedRemindersSectionView: View {
     
     @Binding var contact: Contact
     @State var viewAllDiscardedReminders: Bool = false
-    @Environment(\.editMode) var editMode
+    //@Environment(\.editMode) var editMode
     
     var body: some View {
         Section {
-            if(contact.discardedReminders.count <= 3) {
+            if(contact.discardedReminders.count <= 3 || viewAllDiscardedReminders) {
                 ForEach($contact.discardedReminders, editActions: .all){ $reminder in
                     NavigationLink {
                         ReminderEditView(reminder: $reminder)
