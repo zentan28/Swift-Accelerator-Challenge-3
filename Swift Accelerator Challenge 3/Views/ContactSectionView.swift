@@ -14,15 +14,13 @@ struct ContactSectionView: View {
             ForEach($contactCategory.contacts){$contact in
                 NavigationLink{
                     ContactDetailView(contact: $contact)
-<<<<<<< Updated upstream
                 } label: {
                     VStack(alignment: .leading) {
                         Text(contact.name)
                         Text(contact.other)
                             .frame(maxWidth: .infinity, maxHeight: 10, alignment: .leading)
                             .foregroundStyle(.secondary)
-=======
-                } label:{
+                    }
                     HStack {
 //                        if let profileImage = contact.profileImage {
 //                            Image(profileImage) //change something
@@ -44,7 +42,6 @@ struct ContactSectionView: View {
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
->>>>>>> Stashed changes
                     }
                 }
             }
