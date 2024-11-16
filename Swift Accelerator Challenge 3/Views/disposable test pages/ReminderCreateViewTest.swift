@@ -27,6 +27,5 @@ struct ReminderCreateViewTest: View {
                 dismiss()
             }
         }
-        .navigationTitle("Create Reminder")
     }
 }

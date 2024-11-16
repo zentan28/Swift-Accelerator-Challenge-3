@@ -65,7 +65,7 @@ struct RemindersSectionView: View {
             }
         }
         .sheet(isPresented: $addNewReminder) {
-            ReminderCreateViewTest(contact: $contact)
+            ReminderCreateView(contact: $contact)
         }
     }
 }
