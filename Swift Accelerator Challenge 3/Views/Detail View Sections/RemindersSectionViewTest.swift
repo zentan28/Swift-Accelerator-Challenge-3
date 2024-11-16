@@ -14,6 +14,7 @@ struct RemindersSectionViewTest: View {
     
     @Binding var contact: Contact
     @State var addNewReminder = false
+    
     @Environment(\.editMode) var editMode
     
     var body: some View {
@@ -57,11 +58,16 @@ struct RemindersSectionViewTest: View {
             HStack {
                 Text("Reminders")
                 Spacer()
-                NavigationLink(destination: ReminderCreateViewTest(contact: $contact)) {
-                    //there's a bug where app freezes when this link is called, CPU reaches max tho, is it because of binding issues?
+                
+                Button {
+                    addNewReminder = true
+                } label: {
                     Image(systemName: "plus")
                 }
             }
+        }
+        .sheet(isPresented: $addNewReminder) {
+            ReminderCreateViewTest(contact: $contact)
         }
     }
 }

@@ -12,23 +12,21 @@ struct ReminderCreateViewTest: View {
     @Binding var contact: Contact
     @Environment(\.dismiss) var dismiss
     
-    @State var text = ""
-    @State var date: Date = .init()
+    @State private var text = ""
+    @State private var date: Date = .now
     
     var body: some View {
-        NavigationView {
-            Form {
-                Section {
-                    TextField("Reminder", text: $text)
-                    DatePicker("Date", selection: $date)
-                }
-                
-                Button("Done") {
-                    contact.reminders.append(Reminder(text: text, date: date))
-                    dismiss()
-                }
+        Form {
+            Section {
+                TextField("Reminder", text: $text)
+                DatePicker("Date", selection: $date)
             }
-            .navigationTitle("Create Reminder")
+            
+            Button("Done") {
+                contact.reminders.append(Reminder(text: text, date: .now))
+                dismiss()
+            }
         }
+        .navigationTitle("Create Reminder")
     }
 }
