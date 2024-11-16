@@ -15,12 +15,12 @@ struct ContactSectionView: View {
                 NavigationLink{
                     ContactDetailView(contact: $contact)
                 } label: {
-                    VStack(alignment: .leading) {
-                        Text(contact.name)
-                        Text(contact.other)
-                            .frame(maxWidth: .infinity, maxHeight: 10, alignment: .leading)
-                            .foregroundStyle(.secondary)
-                    }
+//                    VStack(alignment: .leading) {
+//                        Text(contact.name)
+//                        Text(contact.other)
+//                            .frame(maxWidth: .infinity, maxHeight: 10, alignment: .leading)
+//                            .foregroundStyle(.secondary)
+//                    }
                     HStack {
 //                        if let profileImage = contact.profileImage {
 //                            Image(profileImage) //change something

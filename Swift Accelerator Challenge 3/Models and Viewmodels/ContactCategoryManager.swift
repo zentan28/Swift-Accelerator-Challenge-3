@@ -48,9 +48,9 @@ import Observation
             other: "Loves long walks on the beach and coding challenges", // Added other info
             notes: "Don't forget to send a birthday wish!", // Added notes
             reminders: [
-              Reminder(text: "Buy groceries", date: Date().addingTimeInterval(60 * 60 * 24)), // Reminder in 1 day
-              Reminder(text: "Finish Swift project", date: Date().addingTimeInterval(60 * 60 * 24 * 3)), // Reminder in 3 days
-              Reminder(text: "Should be discarded", date: Date().addingTimeInterval(-60 * 60 * 24 * 3))
+                Reminder(text: "Buy groceries", date: Date().addingTimeInterval(60 * 60 * 24), notificationId: scheduleNotifications(title: "Buy groceries", body: "Do what you need to do", date: Date().addingTimeInterval(60 * 60 * 24))), // Reminder in 1 day
+                Reminder(text: "Finish Swift project", date: Date().addingTimeInterval(60 * 60 * 24 * 3), notificationId: scheduleNotifications(title: "Finish Swift project", body: "Do what you need to do", date: Date().addingTimeInterval(60 * 60 * 24 * 3))), // Reminder in 3 days
+                Reminder(text: "Should be discarded", date: Date().addingTimeInterval(-60 * 60 * 24 * 3), notificationId: scheduleNotifications(title: "Should be discarded", body: "Do what you need to do", date: Date().addingTimeInterval(-60 * 60 * 24 * 3)))
             ],
             discardedReminders: []
           )]))

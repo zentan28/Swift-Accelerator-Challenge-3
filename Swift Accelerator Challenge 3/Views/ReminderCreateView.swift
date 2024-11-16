@@ -18,7 +18,11 @@ struct ReminderCreateView: View {
             TextField("Description...", text: $reminderDescription)
             DatePicker("Reminder Date", selection: $reminderDate, in: Date.init()...)
             Button{
-                contact.reminders.append(Reminder(text: reminderDescription, date: reminderDate))
+                let id = scheduleNotifications(title: reminderDescription, body: "Do what you need to do", date: reminderDate)
+                
+                
+                contact.reminders.append(Reminder(text: reminderDescription, date: reminderDate, notificationId: id))
+                
                 print(contact)
                 presentationMode.wrappedValue.dismiss()
             }label:{
@@ -28,7 +32,7 @@ struct ReminderCreateView: View {
     }
 }
 
-func scheduleNotifications(title: String, body: String, date: Date) {
+func scheduleNotifications(title: String, body: String, date: Date) -> String {
     
     let content = UNMutableNotificationContent()
     content.title = title
@@ -38,10 +42,9 @@ func scheduleNotifications(title: String, body: String, date: Date) {
     let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
     let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
     
+    let notificationId = UUID().uuidString
     
-    let repeatedTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 900, repeats: true)
-    
-    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: repeatedTrigger)
+    let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
     
     UNUserNotificationCenter.current().add(request) { error in
         if let error = error {
@@ -51,9 +54,6 @@ func scheduleNotifications(title: String, body: String, date: Date) {
         }
     }
     
-    
-    //#Preview {
-    //    @Previewable @State var contact = Contact(name: "e", image: "e", birthday: Date(), phonenumber: "e", other: "e", notes: "e", reminders: [])
-    //    ReminderCreateView(contact: $contact)
-    //}
+    return notificationId
+    //return request
 }

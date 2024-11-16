@@ -12,7 +12,7 @@ struct DiscardedRemindersSectionView: View {
     @Binding var contact: Contact
     @State var viewAllDiscardedReminders: Bool = false
     //@Environment(\.editMode) var editMode
-    
+    @State var clearBin = false
     var body: some View {
         Section {
             if(contact.discardedReminders.count <= 3 || viewAllDiscardedReminders) {
@@ -65,6 +65,11 @@ struct DiscardedRemindersSectionView: View {
                     } label:{
                         Text("Show all")
                     }
+                }
+                Button{
+                    clearBin = true
+                }label:{
+                  Text("Clear bin")
                 }
             }
         }
