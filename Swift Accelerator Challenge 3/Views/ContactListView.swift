@@ -24,6 +24,11 @@ struct ContactListView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    NavigationLink{
+                        SectionEditView(categoryList: $contactCategoryManager.contactCategories)
+                    }label:{
+                        Text("Edit Categories")
+                    }
                 }
                 
             } else {
