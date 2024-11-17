@@ -8,22 +8,15 @@
 import SwiftUI
 
 struct SectionEditView: View {
-    @Binding var categoryList: [ContactCategory]
+    @Binding var category: ContactCategory
+    @State var newCatName = ""
     var body: some View {
-        NavigationStack {
-            List{
-                ForEach($categoryList, editActions: [.all]){$category in
-                    Text(category.name)
-                }
-                .onDelete{indexSet in
-                    categoryList.remove(atOffsets: indexSet)
-                }
-                .onMove{indices, newOffset in
-                    categoryList.move(fromOffsets: indices, toOffset: newOffset)
-                }
-            }
-            .toolbar{
-                EditButton()
+        Form{
+            TextField("New Name", text: $newCatName)
+            Button{
+                category.name = newCatName
+            }label:{
+                Text("Rename")
             }
         }
     }
