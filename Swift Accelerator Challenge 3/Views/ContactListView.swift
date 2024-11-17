@@ -25,9 +25,9 @@ struct ContactListView: View {
                         Image(systemName: "plus")
                     }
                     NavigationLink{
-                        SectionEditView(categoryList: $contactCategoryManager.contactCategories)
+                        SectionOverallView(categoryList: $contactCategoryManager.contactCategories)
                     }label:{
-                        Text("Edit Categories")
+                        Text("Overview")
                     }
                 }
                 
