@@ -72,6 +72,15 @@ struct DiscardedRemindersSectionView: View {
                   Text("Clear bin")
                 }
             }
+            .alert("Are you sure? This cannot be undone.", isPresented: $clearBin){
+                Button("No", role: .cancel) {
+                    clearBin = false
+                }
+                Button("Yes", role: .destructive){
+                    contact.discardedReminders.removeAll()
+                    clearBin = false
+                }
+            }
         }
     }
 }

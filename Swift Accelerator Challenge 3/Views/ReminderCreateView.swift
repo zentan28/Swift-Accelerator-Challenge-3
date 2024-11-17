@@ -19,10 +19,7 @@ struct ReminderCreateView: View {
             DatePicker("Reminder Date", selection: $reminderDate, in: Date.init()...)
             Button{
                 let id = scheduleNotifications(title: reminderDescription, body: "Do what you need to do", date: reminderDate)
-                
-                
                 contact.reminders.append(Reminder(text: reminderDescription, date: reminderDate, notificationId: id))
-                
                 print(contact)
                 presentationMode.wrappedValue.dismiss()
             }label:{
@@ -41,7 +38,7 @@ func scheduleNotifications(title: String, body: String, date: Date) -> String {
     
     let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
     let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-    
+    //let repeatedTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
     let notificationId = UUID().uuidString
     
     let request = UNNotificationRequest(identifier: notificationId, content: content, trigger: trigger)
