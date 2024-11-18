@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SectionEditView: View {
+    @Environment(\.presentationMode) var presentationMode
     @Binding var category: ContactCategory
     @State var newCatName = ""
     var body: some View {
@@ -15,6 +16,7 @@ struct SectionEditView: View {
             TextField("New Name", text: $newCatName)
             Button{
                 category.name = newCatName
+                presentationMode.wrappedValue.dismiss()
             }label:{
                 Text("Rename")
             }
