@@ -50,8 +50,15 @@ struct ContactListView: View {
             }
             
         }
-        .searchable(text: $searchText)
+//        .searchable(text: $searchText)
     }
+//    var searchResults: [String] {
+//        if searchText.isEmpty {
+//            return names
+//        } else {
+//            return names.filter { $0.contains(searchText) }
+//        }
+//    }
 }
 
 #Preview {
