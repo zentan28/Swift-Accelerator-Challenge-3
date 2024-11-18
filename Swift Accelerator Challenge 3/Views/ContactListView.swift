@@ -17,6 +17,7 @@ struct ContactListView: View {
                 List($contactCategoryManager.contactCategories, editActions: [.all]){$category in
                     ContactSectionView(contactCategory: $category)
                 }
+                .navigationTitle("Contacts")
                 .toolbar{
                     EditButton()
                     NavigationLink {
@@ -46,9 +47,7 @@ struct ContactListView: View {
                             .cornerRadius(100)
                     }
                 }
-                
             }
-            
         }
 //        .searchable(text: $searchText)
     }

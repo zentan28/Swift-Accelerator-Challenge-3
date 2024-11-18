@@ -17,12 +17,13 @@ struct ReminderListView: View {
                 ForEach($contactCategoryManager.contactCategories) { $category in
                     ForEach($category.contacts) { $contact in
                         ForEach($contact.reminders) { $reminder in
-                            
                             NavigationLink {
                                 ReminderEditView(reminder: $reminder)
                             } label: {
                                 VStack(alignment: .leading) {
                                     Text(reminder.text)
+                                    Text(contact.name)
+                                        .foregroundStyle(.secondary)
                                     Text(reminder.date.formatted(date: .abbreviated, time: .shortened))
                                         .foregroundStyle(.secondary)
                                 }
