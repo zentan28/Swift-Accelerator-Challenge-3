@@ -17,6 +17,7 @@ struct ContactListView: View {
                 List($contactCategoryManager.contactCategories, editActions: [.all]){$category in
                     ContactSectionView(contactCategory: $category)
                 }
+                .navigationTitle("Contacts")
                 .toolbar{
                     EditButton()
                     NavigationLink {
@@ -33,9 +34,9 @@ struct ContactListView: View {
                 
             } else {
                 ContentUnavailableView{
-                    Label("No contacts found.", systemImage: "person.crop.circle.badge.questionmark.fill")
+                    Label("No contact category found.", systemImage: "person.crop.circle.badge.questionmark.fill")
                 } description: {
-                    Text("Add your first contact")
+                    Text("Add your first contact category")
                     NavigationLink {
                         CategoryCreatorView()
                     } label: {
@@ -46,9 +47,7 @@ struct ContactListView: View {
                             .cornerRadius(100)
                     }
                 }
-                
             }
-            
         }
 //        .searchable(text: $searchText)
     }

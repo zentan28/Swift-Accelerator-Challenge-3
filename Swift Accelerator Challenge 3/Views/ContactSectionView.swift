@@ -34,8 +34,6 @@ struct ContactSectionView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(25)
 //                        }
-                        
-                        Spacer()
                         VStack(alignment: .leading) {
                             Text(contact.name)
                             Text(contact.other)
